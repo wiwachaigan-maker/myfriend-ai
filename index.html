@@ -2,7 +2,6 @@
 <html lang="th">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My Friend AI: Sakaeo Market</title>
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
     <style>
@@ -19,18 +18,19 @@
     const map = L.map('map', { crs: L.CRS.Simple, minZoom: -2, maxZoom: 1 });
     const bounds = [[0, 0], [1000, 1000]];
 
+    // โค้ดนี้ใช้ชื่อไฟล์ตามที่พี่มีอยู่เป๊ะๆ (ถ้ามีช่องว่าง ก็ต้องมีช่องว่าง)
     const videoElement = document.createElement('video');
-    videoElement.src = 'my friend AI.mp4';
+    videoElement.src = 'my friend AI.mp4'; 
     videoElement.autoplay = true;
     videoElement.loop = true;
     videoElement.muted = true;
     videoElement.playsInline = true;
-    videoElement.play();
-
-    L.videoOverlay(videoElement, bounds, { opacity: 1 }).addTo(map);
+    
+    // บังคับให้เล่นวิดีโอ
+    const overlay = L.videoOverlay(videoElement, bounds, { opacity: 1 }).addTo(map);
     map.fitBounds(bounds);
 
-    L.marker([500, 500]).addTo(map).bindPopup("<b>โซนตลาดนัด</b><br>กดเพื่อขายของ");
+    L.marker([500, 500]).addTo(map).bindPopup("<b>โซนตลาดนัด</b>");
 </script>
 </body>
 </html>
